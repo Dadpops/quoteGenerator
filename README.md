@@ -32,6 +32,16 @@ async function getQuote() {
 }
 ```
 
+Able to link directly into 'composing a new tweet' with the quote currently generated
+```javascript
+function tweetQuote() {
+    const quote = quoteText.innerText;
+    const author = authorText.innerText;
+    const twitterUrl = `https://twitter.com/intent/tweet?text=${quote} - ${author}`;
+    window.open(twitterUrl, '_blank');
+}
+```
+
 
 
 
