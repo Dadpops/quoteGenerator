@@ -2,7 +2,7 @@ Quote Generator using Javascript
 
 Notable features include:
 
-Pulls random quotes using an API
+-Pulls random quotes using an API
 ```javascript
 async function getQuote() {
     loading();
@@ -32,7 +32,7 @@ async function getQuote() {
 }
 ```
 
-Able to link directly into 'composing a new tweet' with the quote currently generated
+-Able to link directly into 'composing a new tweet' with the quote currently generated
 ```javascript
 function tweetQuote() {
     const quote = quoteText.innerText;
@@ -43,7 +43,7 @@ function tweetQuote() {
 ```
 
 
-Uses Loading Animation by toggling CSS class and using keyframes animation
+-Uses Loading Animation by toggling CSS class and using keyframes animation
 ```css
 .loader {
     border: 16px solid #f3f3f3; 
