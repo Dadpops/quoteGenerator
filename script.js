@@ -3,6 +3,7 @@ const quoteText = document.getElementById('quote');
 const authorText = document.getElementById('author');
 const twitterBtn = document.getElementById('twitter');
 const newQuoteBtn = document.getElementById('new-quote');
+const categorySelect = document.getElementById('quote-category');
 const loader = document.getElementById('loader');
 
 // Show Loading
@@ -22,24 +23,20 @@ function complete() {
 // Get Quote From API
 async function getQuote() {
     loading();
-    const proxyUrl = 'https://hidden-forest-89480.herokuapp.com/';
-    const apiUrl = 'http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=json';
+    const tag = categorySelect ? categorySelect.value : '';
+    const apiUrl = tag ? `https://api.quotable.io/random?tags=${tag}` : 'https://api.quotable.io/random';
     try {
-        const response = await fetch(proxyUrl + apiUrl);
+        const response = await fetch(apiUrl);
         const data = await response.json();
-        // If Author Is Blank, add 'Unknown'
-        if (data.quoteAuthor === '') {
-            authorText.innerText = 'Unknown';
-        } else {
-            authorText.innerText = data.quoteAuthor;
-        }
+        const author = data.author || 'Unknown';
+        authorText.innerText = author;
         // Reduce Font Size for Long Quotes
-        if (data.quoteText.length > 120) {
+        if (data.content.length > 120) {
             quoteText.classList.add('long-quote');
         } else {
             quoteText.classList.remove('long-quote');
         }
-        quoteText.innerText = data.quoteText;
+        quoteText.innerText = data.content;
         // Stop Loader, Show Quote
         complete();
     } catch (error) {
@@ -58,6 +55,9 @@ function tweetQuote() {
 // Event Listeners
 newQuoteBtn.addEventListener('click', getQuote);
 twitterBtn.addEventListener('click', tweetQuote);
+if (categorySelect) {
+    categorySelect.addEventListener('change', getQuote);
+}
 
 // On Load
 getQuote();

@@ -1,30 +1,25 @@
-Quote Generator using Javascript
+Quote and Book Idea Generator using Javascript
 
 Notable features include:
+* Random quotes with optional category selection
+* Random book ideas with their own categories on a separate page
 
 -Pulls random quotes using an API
 ```javascript
 async function getQuote() {
     loading();
-    const proxyUrl = 'https://hidden-forest-89480.herokuapp.com/';
-    const apiUrl = 'http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=json';
+    const tag = categorySelect.value;
+    const apiUrl = tag ? `https://api.quotable.io/random?tags=${tag}` : 'https://api.quotable.io/random';
     try {
-        const response = await fetch(proxyUrl + apiUrl);
+        const response = await fetch(apiUrl);
         const data = await response.json();
-        // If Author Is Blank, add 'Unknown'
-        if (data.quoteAuthor === '') {
-            authorText.innerText = 'Unknown';
-        } else {
-            authorText.innerText = data.quoteAuthor;
-        }
-        // Reduce Font Size for Long Quotes
-        if (data.quoteText.length > 120) {
+        authorText.innerText = data.author || 'Unknown';
+        if (data.content.length > 120) {
             quoteText.classList.add('long-quote');
         } else {
             quoteText.classList.remove('long-quote');
         }
-        quoteText.innerText = data.quoteText;
-        // Stop Loader, Show Quote
+        quoteText.innerText = data.content;
         complete();
     } catch (error) {
         getQuote();
