@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <nav>
+        <a href="books.html">Book Ideas</a>
+    </nav>
     <div class="quote-container" id="quote-container">
         <!-- Quote -->
         <div class="quote-text">
@@ -18,6 +21,17 @@
         <!-- Author -->
         <div class="quote-author">
             <span id="author"></span>
+        </div>
+        <!-- Category -->
+        <div class="category-select">
+            <label for="quote-category">Category:</label>
+            <select id="quote-category">
+                <option value="">Random</option>
+                <option value="inspirational">Inspirational</option>
+                <option value="wisdom">Wisdom</option>
+                <option value="technology">Technology</option>
+                <option value="love">Love</option>
+            </select>
         </div>
         <!-- Buttons -->
         <div class="button-container">

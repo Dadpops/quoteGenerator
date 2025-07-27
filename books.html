@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Idea Generator</title>
+    <link rel="shortcut icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <a href="index.html">Quotes</a>
+    </nav>
+    <div class="quote-container" id="idea-container">
+        <!-- Idea -->
+        <div class="quote-text">
+            <span id="idea"></span>
+        </div>
+        <!-- Category -->
+        <div class="category-select">
+            <label for="idea-category">Category:</label>
+            <select id="idea-category">
+                <option value="fiction">Fiction</option>
+                <option value="nonfiction">Non-fiction</option>
+                <option value="selfhelp">Self Help</option>
+            </select>
+        </div>
+        <!-- Buttons -->
+        <div class="button-container">
+            <button id="new-idea">New Idea</button>
+        </div>
+    </div>
+    <div class="loader" id="loader"></div>
+    <script src="books.js"></script>
+</body>
+</html>
+
